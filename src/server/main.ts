@@ -21,6 +21,7 @@ app.get("/api/book-titles", async (_, res) => {
         },
       }
     )
+    .sort({ title: 1 })
     .toArray();
   if (db_res) {
     res.send(db_res);
@@ -32,7 +33,7 @@ app.get("/api/book-titles", async (_, res) => {
 // api to get all books
 app.get("/api/books", async (_, res) => {
   const collection = getCollection("book");
-  const db_res = await collection.find({}).toArray();
+  const db_res = await collection.find({}).sort({ title: 1 }).toArray();
   if (db_res) {
     res.send(db_res);
   } else {
@@ -131,6 +132,7 @@ app.get("/api/search", async (req, res) => {
   try {
     const db_res = await collection
       .find({ $text: { $search: query } })
+      .sort({ title: 1 })
       .toArray();
     res.send(db_res);
   } catch (err) {
