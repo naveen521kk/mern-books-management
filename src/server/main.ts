@@ -123,8 +123,6 @@ app.post("/api/books", async (req, res) => {
 // api to search books
 app.get("/api/search", async (req, res) => {
   const collection = getCollection("book");
-  // wait for 2 seconds to simulate a slow network
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const query = req.query.q as string;
   if (!query) {
     res.status(400).send({ error: "Invalid query" });
@@ -143,6 +141,6 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-ViteExpress.listen(app, 3000, () =>
-  console.log("Server is listening on port 3000...")
+ViteExpress.listen(app, 80, () =>
+  console.log("Server is listening on port 80...")
 );
