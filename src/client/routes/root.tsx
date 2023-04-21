@@ -10,6 +10,7 @@ import { getBooks, searchBooks } from "../api";
 import type { BookTitle } from "../api";
 import * as styles from "./root.module.scss";
 import { useEffect } from "react";
+import { useClerk } from "@clerk/clerk-react";
 
 export default function Root() {
   const { books, q } = useLoaderData() as { books: BookTitle[]; q: string };
@@ -22,6 +23,8 @@ export default function Root() {
   const searching =
     navigation.location &&
     new URLSearchParams(navigation.location.search).has("q");
+
+  const { signOut } = useClerk();
   return (
     <div className={"container-xxl mt-3 my-md-4 " + styles.rootLayout}>
       <aside id="sidebar" className={styles.sidebar}>
@@ -68,7 +71,16 @@ export default function Root() {
             New
           </Link>
         </div>
-
+        <div className="d-grid gap-2 mt-2">
+          <button
+            className="btn btn-outline-danger btn-sm mx-4"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            Sign out
+          </button>
+        </div>
         <nav className={styles.navBar}>
           {books.length ? (
             <ul>
