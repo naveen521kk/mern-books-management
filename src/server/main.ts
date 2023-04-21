@@ -5,6 +5,7 @@ import { getCollection } from "./db/conn";
 import { ObjectId } from "mongodb";
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -110,7 +111,6 @@ app.post("/api/books", async (req, res) => {
   };
   try {
     const db_res = await collection.insertOne(to_insert);
-    console.log(db_res);
     res.send(db_res);
   } catch (err) {
     res.status(500).json({
