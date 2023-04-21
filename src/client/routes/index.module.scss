@@ -1,0 +1,9 @@
+.thumbnail {
+    max-height: 10rem;
+    object-fit: contain;
+}
+.bottomButtons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
