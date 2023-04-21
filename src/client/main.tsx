@@ -16,7 +16,9 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 
-const clerkPubKey = import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
+const clerkPubKey =
+  import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY ||
+  "pk_live_Y2xlcmsuc3lydXNkYXJrLndlYnNpdGUk";
 
 const router = createBrowserRouter([
   {
