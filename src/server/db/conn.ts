@@ -1,7 +1,7 @@
 import { MongoClient, Db as MongoDb } from "mongodb";
 
 const uri = process.env.MONGODB_URL || "mongodb://localhost:27017/";
-const client = new MongoClient("mongodb://127.0.0.1:27017/");
+const client = new MongoClient(uri);
 
 export const getDb = () => {
     return client.db("books");
