@@ -26,3 +26,4 @@ dist-ssr
 info.txt
 docker/*.js
 docker-compose.yml
+.env.dev
