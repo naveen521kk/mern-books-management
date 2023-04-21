@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+info.txt
+docker/*.js
+docker-compose.yml
