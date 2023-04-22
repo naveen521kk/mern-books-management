@@ -40,7 +40,7 @@ export default function Root() {
         <Link to="/" className={styles.headerLink}>
           <h1>Books viewer</h1>
         </Link>
-        <div className="my-2 mx-4">
+        <div className={"my-2 mx-4 " + styles.searchDiv}>
           <Form id="search-form" role="search">
             <div className="input-group">
               <span className="input-group-text" id="basic-addon1">

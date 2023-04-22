@@ -4,18 +4,33 @@
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 .rootLayout {
-    display: grid;
-    grid-template-areas: "sidebar main";
-    grid-template-columns: 1.5fr 5fr;
-    gap: 1.5rem;
-    --bs-gutter-x: 3rem;
+    display: flex;
+    flex-direction: column;
+    main h1 {
+        text-align: center;
+    }
+    @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-areas: "sidebar main";
+        grid-template-columns: 1.5fr 5fr;
+        gap: 1.5rem;
+        --bs-gutter-x: 3rem;
+
+        main h1 {
+            text-align: left;
+        }
+    }
 }
 
+.searchDiv {
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}
+
+
 .sidebar {
-    position: sticky;
-    top: 1rem;
-    display: block !important;
-    height: calc(100vh - 3rem);
     padding-left: 0.25rem;
     margin-left: -0.25rem;
     overflow-y: auto;
@@ -23,6 +38,10 @@
     width: 100%;
     @include media-breakpoint-up(md) {
         width: 18rem;
+        position: sticky;
+        top: 1rem;
+        display: block !important;
+        height: calc(100vh - 3rem);
     }
     @include media-breakpoint-up(lg) {
         width: 22rem;
@@ -49,6 +68,10 @@ main.loading {
     text-decoration: none;
     h1 {
         font-size: 1.5rem;
+    }
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
     }
 }
 
@@ -79,6 +102,10 @@ main.loading {
 }
 
 .navBar {
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
     margin-left: 1rem;
     margin-right: 1rem;
 }
