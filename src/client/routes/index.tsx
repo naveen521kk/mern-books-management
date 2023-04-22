@@ -7,9 +7,9 @@ import { DeleteBook } from "./books";
 export default function Index() {
   const { books } = useLoaderData() as { books: Book[] };
   return (
-    <div>
+    <div className={styles.indexDiv}>
       <h1 className={styles.heading}>Books</h1>
-      <div className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4">
+      <div className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4 align-items-center">
         {books.map((book) => (
           <div key={book._id} className="col">
             <div
