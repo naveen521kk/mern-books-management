@@ -1,3 +1,8 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
 .rootLayout {
   display: grid;
   grid-template-areas: "sidebar main";
@@ -15,7 +20,13 @@
   margin-left: -0.25rem;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 22rem;
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    width: 18rem;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 22rem;
+  }
   text-align: center;
 }
 

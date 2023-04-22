@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <div>
       <h1>Books</h1>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div className="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-4">
         {books.map((book) => (
           <div key={book._id} className="col">
             <div
