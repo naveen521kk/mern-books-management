@@ -29,7 +29,7 @@ export default function Root() {
   const [loading, setLoading] = React.useState(false);
 
   return (
-    <div className={"container-xxl mt-3 my-md-4 " + styles.rootLayout}>
+    <div className={"container-xxl mt-3 mb-md-4 " + styles.rootLayout}>
       <div
         className={styles.loadingScreen}
         style={{ display: loading ? "flex" : "none" }}
