@@ -24,7 +24,7 @@ export default function Book() {
   const { book } = useLoaderData() as { book: Book };
 
   return (
-    <div id="contact">
+    <div id="books" className="my-4 d-flex align-items-center flex-column text-center">
       <div>
         <img key={book.thumbnail} src={book.thumbnail || undefined} />
       </div>
@@ -32,9 +32,8 @@ export default function Book() {
       <div>
         <h1>{book.title}</h1>
         <p>{book.authors}</p>
-
-        <DeleteBook id={book._id} />
       </div>
+      <DeleteBook id={book._id} />
     </div>
   );
 }
