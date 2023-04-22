@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon src/server/main.ts -w src/server",
+    "dev": "nodemon -r dotenv/config src/server/main.ts -w src/server dotenv_config_path=.env.dev",
     "start": "NODE_ENV=production ts-node src/server/main.ts",
     "build": "vite build"
   },
