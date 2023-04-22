@@ -11,9 +11,6 @@ import { action as destroyAction } from "./routes/destroyBook";
 import AddBooks, { action as addAction } from "./routes/addBooks";
 import {
   ClerkProvider,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
 } from "@clerk/clerk-react";
 
 const clerkPubKey =
@@ -36,12 +33,13 @@ const router = createBrowserRouter([
       {
         path: "books/:bookId/destroy",
         action: destroyAction,
-        errorElement: <div>Oops! There was an error.</div>,
+        errorElement: <ErrorPage />,
       },
       {
         path: "new",
         element: <AddBooks />,
         action: addAction,
+        errorElement: <ErrorPage />,
       },
     ],
   },
@@ -50,12 +48,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={clerkPubKey}>
-      <SignedIn>
-        <RouterProvider router={router} />
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
+      <RouterProvider router={router} />
     </ClerkProvider>
   </React.StrictMode>
 );

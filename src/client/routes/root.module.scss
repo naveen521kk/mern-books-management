@@ -17,7 +17,6 @@
   overflow-x: hidden;
   width: 22rem;
   text-align: center;
-
 }
 
 .main {
@@ -86,7 +85,6 @@ main.loading {
   color: hsl(224, 98%, 58%);
 }
 
-
 .searchSpinner {
   width: 1rem;
   height: 1rem;
@@ -100,5 +98,27 @@ main.loading {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner {
+    width: 5rem;
+    height: 5rem;
+    color: white;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23fff' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M20 4v5h-.582m0 0a8.001 8.001 0 00-15.356 2m15.356-2H15M4 20v-5h.581m0 0a8.003 8.003 0 0015.357-2M4.581 15H9' /%3E%3C/svg%3E");
+    animation: spin 1s infinite linear;
   }
 }

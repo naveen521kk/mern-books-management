@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Outlet,
   NavLink,
@@ -24,9 +25,17 @@ export default function Root() {
     navigation.location &&
     new URLSearchParams(navigation.location.search).has("q");
 
-  const { signOut } = useClerk();
+  const { signOut, openSignIn, user } = useClerk();
+  const [loading, setLoading] = React.useState(false);
+
   return (
     <div className={"container-xxl mt-3 my-md-4 " + styles.rootLayout}>
+      <div
+        className={styles.loadingScreen}
+        style={{ display: loading ? "flex" : "none" }}
+      >
+        <div className={styles.spinner} />
+      </div>
       <aside id="sidebar" className={styles.sidebar}>
         <Link to="/" className={styles.headerLink}>
           <h1>Books viewer</h1>
@@ -73,12 +82,21 @@ export default function Root() {
         </div>
         <div className="d-grid gap-2 mt-2">
           <button
-            className="btn btn-outline-danger btn-sm mx-4"
-            onClick={() => {
-              signOut();
+            className={
+              "btn btn-sm mx-4 " +
+              (user ? "btn-outline-danger" : "btn-outline-primary")
+            }
+            onClick={async () => {
+              if (user) {
+                setLoading(true);
+                await signOut();
+                setLoading(false);
+                return;
+              }
+              openSignIn();
             }}
           >
-            Sign out
+            {user ? <>Sign out</> : <>Sign in</>}
           </button>
         </div>
         <nav className={styles.navBar}>

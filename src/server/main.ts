@@ -1,10 +1,24 @@
+import "dotenv/config";
 import express from "express";
 import ViteExpress from "vite-express";
 import cors from "cors";
 import { getCollection } from "./db/conn";
 import { ObjectId } from "mongodb";
+import {
+  ClerkExpressRequireAuth,
+  ClerkExpressWithAuth,
+  StrictAuthProp,
+} from "@clerk/clerk-sdk-node";
+
+const PORT = process.env.PORT || '3000';
 
 const app = express();
+
+declare global {
+  namespace Express {
+    interface Request extends StrictAuthProp {}
+  }
+}
 
 app.use(cors());
 app.use(express.json());
@@ -67,7 +81,16 @@ app.get("/api/books/:id", async (req, res) => {
 });
 
 // api to delete a book by id
-app.delete("/api/books/:id", async (req, res) => {
+app.delete("/api/books/:id", ClerkExpressWithAuth(), async (req, res) => {
+  if (!req.auth.userId) {
+    res
+      .status(401)
+      .send({
+        error:
+          "Unauthorized, please login using the sign-in button to continue!",
+      });
+    return;
+  }
   const collection = getCollection("book");
   let id;
   try {
@@ -88,7 +111,16 @@ app.delete("/api/books/:id", async (req, res) => {
 });
 
 // api to create a book
-app.post("/api/books", async (req, res) => {
+app.post("/api/books", ClerkExpressWithAuth(), async (req, res) => {
+  if (!req.auth.userId) {
+    res
+      .status(401)
+      .send({
+        error:
+          "Unauthorized, please login using the sign-in button to continue!",
+      });
+    return;
+  }
   const collection = getCollection("book");
   // make sure the request body is valid
   // also check for the type of fields, title is string,
@@ -143,6 +175,6 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-ViteExpress.listen(app, 80, () =>
+ViteExpress.listen(app, PORT, () =>
   console.log("Server is listening on port 80...")
 );
