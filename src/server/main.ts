@@ -176,5 +176,5 @@ app.get("/api/search", async (req, res) => {
 });
 
 ViteExpress.listen(app, PORT, () =>
-  console.log("Server is listening on port 80...")
+  console.log(`Server is listening on port ${PORT}...`)
 );
