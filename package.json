@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.15.3",
+    "@clerk/clerk-sdk-node": "^4.8.6",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
