@@ -10,7 +10,7 @@ import {
   StrictAuthProp,
 } from "@clerk/clerk-sdk-node";
 
-const PORT = process.env.PORT || '3000';
+const PORT = (process.env.PORT || 3000) as number;
 
 const app = express();
 
