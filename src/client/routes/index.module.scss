@@ -1,3 +1,8 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
 .thumbnail {
     max-height: 10rem;
     object-fit: contain;
@@ -6,4 +11,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+.heading {
+    visibility: hidden;
+
+    @include media-breakpoint-up(md) {
+        visibility: visible;
+    }
 }

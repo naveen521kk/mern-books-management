@@ -6,19 +6,13 @@
 .rootLayout {
     display: flex;
     flex-direction: column;
-    main h1 {
-        text-align: center;
-    }
+
     @include media-breakpoint-up(md) {
         display: grid;
         grid-template-areas: "sidebar main";
         grid-template-columns: 1.5fr 5fr;
         gap: 1.5rem;
         --bs-gutter-x: 3rem;
-
-        main h1 {
-            text-align: left;
-        }
     }
 }
 
@@ -68,10 +62,6 @@ main.loading {
     text-decoration: none;
     h1 {
         font-size: 1.5rem;
-    }
-    display: none;
-    @include media-breakpoint-up(md) {
-        display: block;
     }
 }
 
